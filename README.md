@@ -7,9 +7,13 @@
 
 ## 📌 Descrição do Projeto
 
+Vinicius de Souza SantAnna rm556841
+Felipe Rosa Peres rm557636
+Pedro Henrique de Souza rm555533
+
 **FloodSafe** é uma solução de monitoramento de enchentes e níveis de água baseada em IoT, desenvolvida para detectar variações de nível e alertar em tempo real por meio de atuadores físicos e um painel online.
 
-A aplicação simula cenários de emergência urbana e desastres naturais, com o objetivo de auxiliar a população ou órgãos responsáveis a tomarem decisões rápidas e preventivas.
+Nossa aplicação simula cenários de emergência urbana e desastres naturais, com o objetivo de auxiliar a população ou órgãos responsáveis a tomarem decisões rápidas e preventivas.
 
 ---
 
