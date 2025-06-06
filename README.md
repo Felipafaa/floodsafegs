@@ -94,6 +94,28 @@ MQTT (JSON)
 4. Clique em **Deploy**
 5. Acesse: `http://localhost:1880/ui`
 
+📦 Dependências do Projeto
+🔧 Arduino / ESP32 (Wokwi)
+As seguintes bibliotecas são utilizadas no código:
+
+Biblioteca	Função
+WiFi.h	Conexão do ESP32 à rede Wi-Fi
+PubSubClient.h	Comunicação MQTT com o broker público
+LiquidCrystal_I2C.h	Controle do display LCD I2C para exibição local dos dados
+
+Essas bibliotecas são carregadas automaticamente no Wokwi com base nos #include e também podem ser instaladas via Library Manager no Arduino IDE, se usado fora do simulador.
+
+🌐 Node-RED
+O dashboard é construído com os seguintes componentes:
+
+Node / Pacote	Função
+node-red-dashboard	Criação de interface web com gauge, texto, etc.
+mqtt in (nativo)	Receber mensagens do broker MQTT
+json (nativo)	Converter a string recebida em objeto JSON
+function (nativo)	Processar e classificar os valores do sensor
+
+Obs.: O pacote node-red-dashboard pode ser instalado via Menu > Manage palette > Install > node-red-dashboard.
+
 ### O link deve abrir um pequeno dashboard com um medidor que mostra o nivel.
 
 ---
