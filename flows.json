@@ -1,0 +1,161 @@
+[
+    {
+        "id": "ae0ab265a19ad544",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "mqtt-in-nivel",
+        "type": "mqtt in",
+        "z": "ae0ab265a19ad544",
+        "name": "Nível da água (MQTT)",
+        "topic": "floodsafe/nivel",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt-hivemq",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 580,
+        "wires": [
+            [
+                "json-parse"
+            ]
+        ]
+    },
+    {
+        "id": "json-parse",
+        "type": "json",
+        "z": "ae0ab265a19ad544",
+        "name": "Converter JSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 580,
+        "wires": [
+            [
+                "extrair-nivel",
+                "classificar-nivel"
+            ]
+        ]
+    },
+    {
+        "id": "extrair-nivel",
+        "type": "function",
+        "z": "ae0ab265a19ad544",
+        "name": "Extrair valor do nível",
+        "func": "msg.payload = msg.payload.nivel;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 560,
+        "wires": [
+            [
+                "gauge-nivel"
+            ]
+        ]
+    },
+    {
+        "id": "classificar-nivel",
+        "type": "function",
+        "z": "ae0ab265a19ad544",
+        "name": "Classificar nível",
+        "func": "const nivel = msg.payload.nivel;\n\nif (nivel < 150) {\n    msg.payload = \"Nível BAIXO\";\n} else if (nivel < 250) {\n    msg.payload = \"Nível MÉDIO\";\n} else {\n    msg.payload = \"Nível ALTO\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 720,
+        "y": 620,
+        "wires": [
+            [
+                "text-nivel"
+            ]
+        ]
+    },
+    {
+        "id": "gauge-nivel",
+        "type": "ui_gauge",
+        "z": "ae0ab265a19ad544",
+        "name": "Medidor de Nível",
+        "group": "grupo-nivel",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Nível da Água (cm)",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 400,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": 150,
+        "seg2": 250,
+        "x": 950,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "text-nivel",
+        "type": "ui_text",
+        "z": "ae0ab265a19ad544",
+        "group": "grupo-nivel",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "Status do nível",
+        "label": "Classificação",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 960,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "mqtt-hivemq",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Broker",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "grupo-nivel",
+        "type": "ui_group",
+        "name": "Monitoramento",
+        "tab": "aba-dashboard",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false
+    },
+    {
+        "id": "aba-dashboard",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
