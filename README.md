@@ -89,32 +89,33 @@ MQTT (JSON)
 ### 🌐 Rodar Node-RED
 
 1. Instale o Node-RED ([guia aqui](https://nodered.org/docs/getting-started/)) e rode na sua máquina.
-2. Instale o **Node-Red Dashboard** utilizando o menu e indo em gerenciar paletas.
+2. Instale o **Node-Red Dashboard**. O pacote node-red-dashboard pode ser instalado via Menu > Manage palette > Install > node-red-dashboard.
 3. Importe o [fluxo Node-RED] presente nesse repositório.
 4. Clique em **Deploy**
 5. Acesse: `http://localhost:1880/ui`
 
-📦 Dependências do Projeto
-🔧 Arduino / ESP32 (Wokwi)
-As seguintes bibliotecas são utilizadas no código:
+## 📦 Dependências do Projeto
+### 🔧 Arduino / ESP32 (Wokwi)
 
-Biblioteca	Função
-WiFi.h	Conexão do ESP32 à rede Wi-Fi
-PubSubClient.h	Comunicação MQTT com o broker público
-LiquidCrystal_I2C.h	Controle do display LCD I2C para exibição local dos dados
+-As seguintes bibliotecas são utilizadas no código:
+
+
+WiFi.h-Conexão do ESP32 à rede Wi-Fi
+PubSubClient.h-Comunicação MQTT com o broker público
+LiquidCrystal_I2C.h-Controle do display LCD I2C para exibição local dos dados
 
 Essas bibliotecas são carregadas automaticamente no Wokwi com base nos #include e também podem ser instaladas via Library Manager no Arduino IDE, se usado fora do simulador.
 
-🌐 Node-RED
+## 🌐 Node-RED
 O dashboard é construído com os seguintes componentes:
 
-Node / Pacote	Função
-node-red-dashboard	Criação de interface web com gauge, texto, etc.
-mqtt in (nativo)	Receber mensagens do broker MQTT
-json (nativo)	Converter a string recebida em objeto JSON
-function (nativo)	Processar e classificar os valores do sensor
 
-Obs.: O pacote node-red-dashboard pode ser instalado via Menu > Manage palette > Install > node-red-dashboard.
+node-red-dashboard-Criação de interface web com gauge, texto, etc.
+mqtt in (nativo)-Receber mensagens do broker MQTT
+json (nativo)-Converter a string recebida em objeto JSON
+function (nativo)-Processar e classificar os valores do sensor
+
+
 
 ### O link deve abrir um pequeno dashboard com um medidor que mostra o nivel.
 
