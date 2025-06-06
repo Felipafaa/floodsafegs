@@ -73,8 +73,6 @@ MQTT (JSON)
 
 ## 🖥️ Dashboard Node-RED
 
-![Dashboard](https://user-images.githubusercontent.com/0000000/placeholder_dashboard.png)
-
 - Acesse pelo navegador: `http://localhost:1880/ui` ou URL do seu servidor
 - Medidor e texto se atualizam em tempo real com base no MQTT
 
